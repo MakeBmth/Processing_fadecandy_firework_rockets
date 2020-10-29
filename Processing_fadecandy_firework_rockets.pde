@@ -43,7 +43,8 @@ int cntrlDataIndex = 0;
 int startMillisecond = -1;
 int nextMillisecond = 0;
 
-Pulse pulse;
+// SoundFile array to hold samples
+SoundFile[] sample;
 
 void setup() {
 
@@ -87,9 +88,13 @@ void setup() {
   velocityYMax = sqrt(2*gravity.y*(spacing * (boxesDown * ledsDown - 1)));
   velocityYMin = 0.5 * velocityYMax;
 
-  // Create and start the sine oscillator.
-  pulse = new Pulse(this);
-  pulse.amp(0.25);
+    // Create a new firework sample array and populate it with some samples
+  sample = new SoundFile[5];
+  sample[0] = new SoundFile(this, "bang1.wav");
+  sample[1] = new SoundFile(this, "bang_fizz1.wav");
+  sample[2] = new SoundFile(this, "bang_fizz2.wav");
+  sample[3] = new SoundFile(this, "bang_bang1.wav");
+  sample[4] = new SoundFile(this, "fizz_bang1.wav");
 }
 
 void draw() {
@@ -141,12 +146,11 @@ void draw() {
     f.run();
     if (f.done()) {
       fireworks.remove(i);
-      pulse.stop();
     }
     if (f.exploded()) {
-      println("bang!");
-      //Start the Pulse Oscillator. 
-      pulse.play();
+      //println("bang!");
+      // Play a random filework sample
+      sample[int(random(0, 4))].play();
     }
   }
 
