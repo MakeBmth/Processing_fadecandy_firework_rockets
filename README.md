@@ -3,6 +3,7 @@
 
 ## New Features!
 
+  - Support playing sound files for the rocket explosions
   - 2D array of firework sequence data in sketch
 
 ## Firework launch control sequence data

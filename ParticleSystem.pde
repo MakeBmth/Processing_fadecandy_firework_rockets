@@ -13,6 +13,7 @@ class Firework {
   int hue;
   int numExplodees;
   Boolean alreadyExploded = false;
+  int soundTrack = -1;
 
   Firework() {
     particles = new ArrayList<Particle>();   // Initialize the arraylist
@@ -92,5 +93,13 @@ class Firework {
     } else {
       return false;
     }
+  }
+
+  void setSoundTrack(int i) {
+    soundTrack = i;
+  }
+
+  int getSoundTrack() {
+    return soundTrack;
   }
 }
