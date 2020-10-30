@@ -144,13 +144,15 @@ void draw() {
   for (int i = fireworks.size()-1; i >= 0; i--) {
     Firework f = fireworks.get(i);
     f.run();
+    int randomSampleIndex = int(random(sample.length));
     if (f.done()) {
       fireworks.remove(i);
+      sample[randomSampleIndex].stop();
     }
     if (f.exploded()) {
       //println("bang!");
       // Play a random filework sample
-      sample[int(random(0, 4))].play();
+      sample[randomSampleIndex].play();
     }
   }
 
